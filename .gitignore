@@ -1,0 +1,7 @@
+# Secretos: la clave de la API nunca se sube
+.env
+
+# Entorno virtual y archivos generados por Python
+.venv/
+__pycache__/
+*.pyc

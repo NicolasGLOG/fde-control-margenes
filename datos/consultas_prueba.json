@@ -1,0 +1,52 @@
+[
+  {
+    "nombre": "Facturas faltantes",
+    "entrada": {
+      "operacion_id": "QF1001",
+      "rol": "controller",
+      "consulta": "¿Qué facturas faltan para cerrar el margen de esta operación?",
+      "documentos": "- Factura de venta N°5521 a Vinos del Maule: 3.400 USD\n- Factura CMA CGM N°88231 (flete + gastos locales): 2.650 USD\n- Correo del agente de origen (Shanghai): 'la debit note sale la próxima semana'"
+    },
+    "esperado": {"categoria": "facturas_faltantes", "requiere_humano": true}
+  },
+  {
+    "nombre": "Costo sobre el umbral",
+    "entrada": {
+      "operacion_id": "QF1002",
+      "rol": "controller",
+      "consulta": "Revisa si la debit note del agente cuadra con lo acordado en la cotización.",
+      "documentos": "- Cotización aprobada: flete agente de origen acordado en 2.800 USD\n- Debit note agente Ningbo N°DN-7781: 3.250 USD\n- Factura de venta N°5530 a Importadora Sur: 4.100 USD\n- Factura MSC N°55102 (gastos locales): 410 USD"
+    },
+    "esperado": {"categoria": "alerta_costo", "requiere_humano": true}
+  },
+  {
+    "nombre": "Operación completa (vendedor)",
+    "entrada": {
+      "operacion_id": "QF1003",
+      "rol": "vendedor",
+      "consulta": "¿Está lista la operación de Textiles Andes para cerrarla?",
+      "documentos": "- Factura de venta N°5540 a Textiles Andes: 3.900 USD\n- Factura Hapag-Lloyd N°HL-2290 (flete): 2.950 USD\n- Debit note agente Shanghai N°SH-118: 300 USD (coincide con lo acordado: 300 USD)\n- Factura de gastos locales destino N°GL-77: 180 USD"
+    },
+    "esperado": {"categoria": "estado_operacion", "requiere_humano": false}
+  },
+  {
+    "nombre": "Consulta confusa",
+    "entrada": {
+      "operacion_id": "L201",
+      "rol": "controller",
+      "consulta": "oye y lo del chino ese que no llegó, ya está o no? lo de la otra vez",
+      "documentos": "- Factura de venta N°5545 (carga consolidada LCL): 1.250 USD\n- Factura consolidador N°CN-55: 780 USD"
+    },
+    "esperado": {"categoria": "facturas_faltantes", "requiere_humano": true}
+  },
+  {
+    "nombre": "Fuera de tema",
+    "entrada": {
+      "operacion_id": "QF1004",
+      "rol": "controller",
+      "consulta": "¿Me recomiendas una receta de pisco sour para el viernes?",
+      "documentos": "- Factura de venta N°5550 a Frutas del Sur: 3.600 USD"
+    },
+    "esperado": {"categoria": "fuera_de_alcance", "requiere_humano": true}
+  }
+]
