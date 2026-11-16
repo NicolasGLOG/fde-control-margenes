@@ -1,3 +1,6 @@
 anthropic
 pydantic
 python-dotenv
+chromadb
+rank-bm25
+pytest

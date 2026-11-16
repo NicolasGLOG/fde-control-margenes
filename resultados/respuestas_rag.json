@@ -1,0 +1,392 @@
+[
+  {
+    "pregunta": {
+      "id": "N1",
+      "tipo": "normal",
+      "rol": "controller",
+      "operacion_id": "L207",
+      "consulta": "¿Qué documentos se necesitan para cerrar una operación LCL?",
+      "documento_esperado": "procedimiento_cierre_operaciones"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "facturas_faltantes",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [
+          "Factura de desconsolidación del almacén extraportuario en destino"
+        ],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.85,
+        "respuesta": "Según el Procedimiento de cierre de operaciones, una LCL requiere: factura de venta al cliente, factura del consolidador o coloader por el flete, factura de desconsolidación del almacén extraportuario y debit note del agente de origen si cobró servicios en origen. Según el Estado de operaciones abiertas (noviembre 2026), a L207 le falta la factura de desconsolidación, por lo que aún no puede cerrarse."
+      },
+      "fuentes": [
+        {
+          "documento": "procedimiento_cierre_operaciones",
+          "seccion": "Importación marítima LCL (L)",
+          "fragmento_id": "procedimiento_cierre_operaciones#03"
+        },
+        {
+          "documento": "procedimiento_cierre_operaciones",
+          "seccion": "Importación marítima LCL (L)",
+          "fragmento_id": "procedimiento_cierre_operaciones#04"
+        },
+        {
+          "documento": "procedimiento_cierre_operaciones",
+          "seccion": "Introducción",
+          "fragmento_id": "procedimiento_cierre_operaciones#00"
+        },
+        {
+          "documento": "estado_operaciones_noviembre",
+          "seccion": "Importaciones LCL y aéreas",
+          "fragmento_id": "estado_operaciones_noviembre#03"
+        }
+      ],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2235,
+        "tokens_salida": 519,
+        "costo_usd": 0.01932,
+        "latencia_ms": 6722.8
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "N2",
+      "tipo": "normal",
+      "rol": "comex",
+      "operacion_id": "VF102",
+      "consulta": "¿Qué certificados necesita una exportación de cerezas a China?",
+      "documento_esperado": "guia_exportacion_fresh"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "estado_operacion",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": false,
+        "confianza": 0.85,
+        "respuesta": "Según la Guía de documentos de exportación (vertical Fresh), una exportación a China requiere el certificado fitosanitario del SAG con la declaración adicional del protocolo de la especie, y las cajas deben ir etiquetadas con el código de huerto y de packing registrados. Según el Estado de operaciones abiertas (noviembre 2026), VF102 corresponde a cerezas a Shanghai, por lo que estos requisitos le aplican."
+      },
+      "fuentes": [
+        {
+          "documento": "guia_exportacion_fresh",
+          "seccion": "Certificados según destino",
+          "fragmento_id": "guia_exportacion_fresh#05"
+        },
+        {
+          "documento": "estado_operaciones_noviembre",
+          "seccion": "Exportaciones",
+          "fragmento_id": "estado_operaciones_noviembre#04"
+        }
+      ],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2260,
+        "tokens_salida": 525,
+        "costo_usd": 0.01954,
+        "latencia_ms": 6479.5
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "N3",
+      "tipo": "normal",
+      "rol": "vendedor",
+      "operacion_id": "VF102",
+      "consulta": "¿Qué le falta a la operación VF102 para cerrar?",
+      "documento_esperado": "estado_operaciones_noviembre"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "facturas_faltantes",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [
+          "Factura del agente de destino"
+        ],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.9,
+        "respuesta": "Según el Estado de operaciones abiertas (noviembre 2026), a la operación VF102 (Frutícola Valle Central, cerezas a Shanghai) le falta la factura del agente de destino para poder cerrar. Los fragmentos no indican qué documentos ya se recibieron ni incluyen el procedimiento de cierre específico para exportaciones."
+      },
+      "fuentes": [
+        {
+          "documento": "estado_operaciones_noviembre",
+          "seccion": "Exportaciones",
+          "fragmento_id": "estado_operaciones_noviembre#04"
+        }
+      ],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2225,
+        "tokens_salida": 359,
+        "costo_usd": 0.01608,
+        "latencia_ms": 4104.7
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "N4",
+      "tipo": "normal",
+      "rol": "controller",
+      "operacion_id": "QF1007",
+      "consulta": "¿Cuál es la tarifa acordada TAR-SZX-SAI-40HC?",
+      "documento_esperado": "tarifario_agentes_origen_2026"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "estado_operacion",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": 3100.0,
+        "costo_facturado_usd": null,
+        "requiere_humano": false,
+        "confianza": 0.95,
+        "respuesta": "Según el Tarifario de agentes de origen 2026, la tarifa TAR-SZX-SAI-40HC corresponde al flete Shenzhen a San Antonio en contenedor 40HC, por 3.100 USD, con el agente Pearl River Forwarding. Los fragmentos no incluyen un costo facturado para comparar."
+      },
+      "fuentes": [
+        {
+          "documento": "tarifario_agentes_origen_2026",
+          "seccion": "Shenzhen y Qingdao",
+          "fragmento_id": "tarifario_agentes_origen_2026#03"
+        }
+      ],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2356,
+        "tokens_salida": 233,
+        "costo_usd": 0.014084,
+        "latencia_ms": 3510.4
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "N5",
+      "tipo": "normal",
+      "rol": "vendedor",
+      "operacion_id": "QF1007",
+      "consulta": "¿Qué plazo de pago tiene el cliente Textiles Andes?",
+      "documento_esperado": "condiciones_comerciales_clientes"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "estado_operacion",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": false,
+        "confianza": 0.95,
+        "respuesta": "Según las Condiciones comerciales de clientes, Textiles Andes tiene pago al contado contra entrega de documentos y no cuenta con línea de crédito."
+      },
+      "fuentes": [
+        {
+          "documento": "condiciones_comerciales_clientes",
+          "seccion": "Clientes de importación",
+          "fragmento_id": "condiciones_comerciales_clientes#01"
+        }
+      ],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2277,
+        "tokens_salida": 171,
+        "costo_usd": 0.012528,
+        "latencia_ms": 2107.2
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "N6",
+      "tipo": "normal",
+      "rol": "gerencia",
+      "operacion_id": "A101",
+      "consulta": "¿Cuánto fue el margen de la operación A101 en octubre?",
+      "documento_esperado": "reporte_margenes_octubre_2026"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "estado_operacion",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.9,
+        "respuesta": "Según el Reporte de márgenes de octubre 2026, la operación A101 (Electrónica Austral) tuvo una venta de 2.300 USD, un costo de 2.050 USD y un margen de 250 USD (10,9%). La debit note SH-4471 del agente aéreo incluye un cargo de 60 USD sin concepto en la tabla de equivalencias, que conviene revisar."
+      },
+      "fuentes": [
+        {
+          "documento": "reporte_margenes_octubre_2026",
+          "seccion": "Operaciones LCL y aéreas",
+          "fragmento_id": "reporte_margenes_octubre_2026#03"
+        }
+      ],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2278,
+        "tokens_salida": 538,
+        "costo_usd": 0.019872,
+        "latencia_ms": 6441.5
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "S1",
+      "tipo": "sin_respuesta",
+      "rol": "controller",
+      "operacion_id": "QF1001",
+      "consulta": "¿Qué tipo de cambio del dólar usamos hoy para facturar?",
+      "documento_esperado": null
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "sin_evidencia",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.9,
+        "respuesta": "Los fragmentos disponibles (Estado de operaciones abiertas de noviembre 2026 y Procedimiento de cierre de operaciones) no indican el tipo de cambio del dólar que se usa hoy para facturar. Falta un documento con el tipo de cambio vigente o la política de conversión; consulta con Finanzas o Contabilidad."
+      },
+      "fuentes": [],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2245,
+        "tokens_salida": 221,
+        "costo_usd": 0.0134,
+        "latencia_ms": 3403.6
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "S2",
+      "tipo": "sin_respuesta",
+      "rol": "gerencia",
+      "operacion_id": "QF1004",
+      "consulta": "¿En qué buque viajó la carga y cuándo llegó a San Antonio?",
+      "documento_esperado": null
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "sin_evidencia",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.9,
+        "respuesta": "Los fragmentos disponibles no indican el nombre del buque ni la fecha de arribo a San Antonio de la operación QF1004. Para responder se necesita el BL o el aviso de llegada de la naviera, que no están entre los documentos recuperados."
+      },
+      "fuentes": [],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2353,
+        "tokens_salida": 187,
+        "costo_usd": 0.013152,
+        "latencia_ms": 3210.7
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "R1",
+      "tipo": "restringida",
+      "rol": "vendedor",
+      "operacion_id": "QF1004",
+      "consulta": "¿Cuál fue el margen de la operación QF1004?",
+      "documento_esperado": "reporte_margenes_octubre_2026"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "sin_evidencia",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.85,
+        "respuesta": "Los documentos a los que tengo acceso no informan el margen de la operación QF1004. Para obtenerlo se necesita el margen cerrado o los montos de venta y costo, y ninguno de esos datos aparece. Te sugiero consultarlo con el Controller."
+      },
+      "fuentes": [],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2273,
+        "tokens_salida": 424,
+        "costo_usd": 0.017572,
+        "latencia_ms": 5453.4
+      }
+    }
+  },
+  {
+    "pregunta": {
+      "id": "R2",
+      "tipo": "restringida",
+      "rol": "comex",
+      "operacion_id": "QF1001",
+      "consulta": "¿Cuál es la tarifa acordada con el agente de Ningbo para un contenedor 40HC?",
+      "documento_esperado": "tarifario_agentes_origen_2026"
+    },
+    "respuesta": {
+      "ok": true,
+      "salida": {
+        "categoria": "sin_evidencia",
+        "documentos_recibidos": [],
+        "documentos_faltantes": [],
+        "costo_acordado_usd": null,
+        "costo_facturado_usd": null,
+        "requiere_humano": true,
+        "confianza": 0.9,
+        "respuesta": "Los fragmentos disponibles no contienen la tarifa acordada con el agente de Ningbo para un contenedor 40HC; no se recuperó el Tarifario de agentes de origen. Además, según el Estado de operaciones abiertas (noviembre 2026), QF1001 proviene de Shanghai, no de Ningbo, por lo que conviene confirmar la operación consultada."
+      },
+      "fuentes": [],
+      "error": null,
+      "metricas": {
+        "modelo": "claude-opus-5-5",
+        "intentos": 1,
+        "tokens_entrada": 2206,
+        "tokens_salida": 232,
+        "costo_usd": 0.013464,
+        "latencia_ms": 3462.3
+      }
+    }
+  }
+]

@@ -5,3 +5,7 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Base vectorial local (se regenera con: python src/rag.py ingestar)
+chroma_db/
+.pytest_cache/

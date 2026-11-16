@@ -1,0 +1,52 @@
+[
+  {
+    "id": "N1", "tipo": "normal", "rol": "controller", "operacion_id": "L207",
+    "consulta": "¿Qué documentos se necesitan para cerrar una operación LCL?",
+    "documento_esperado": "procedimiento_cierre_operaciones"
+  },
+  {
+    "id": "N2", "tipo": "normal", "rol": "comex", "operacion_id": "VF102",
+    "consulta": "¿Qué certificados necesita una exportación de cerezas a China?",
+    "documento_esperado": "guia_exportacion_fresh"
+  },
+  {
+    "id": "N3", "tipo": "normal", "rol": "vendedor", "operacion_id": "VF102",
+    "consulta": "¿Qué le falta a la operación VF102 para cerrar?",
+    "documento_esperado": "estado_operaciones_noviembre"
+  },
+  {
+    "id": "N4", "tipo": "normal", "rol": "controller", "operacion_id": "QF1007",
+    "consulta": "¿Cuál es la tarifa acordada TAR-SZX-SAI-40HC?",
+    "documento_esperado": "tarifario_agentes_origen_2026"
+  },
+  {
+    "id": "N5", "tipo": "normal", "rol": "vendedor", "operacion_id": "QF1007",
+    "consulta": "¿Qué plazo de pago tiene el cliente Textiles Andes?",
+    "documento_esperado": "condiciones_comerciales_clientes"
+  },
+  {
+    "id": "N6", "tipo": "normal", "rol": "gerencia", "operacion_id": "A101",
+    "consulta": "¿Cuánto fue el margen de la operación A101 en octubre?",
+    "documento_esperado": "reporte_margenes_octubre_2026"
+  },
+  {
+    "id": "S1", "tipo": "sin_respuesta", "rol": "controller", "operacion_id": "QF1001",
+    "consulta": "¿Qué tipo de cambio del dólar usamos hoy para facturar?",
+    "documento_esperado": null
+  },
+  {
+    "id": "S2", "tipo": "sin_respuesta", "rol": "gerencia", "operacion_id": "QF1004",
+    "consulta": "¿En qué buque viajó la carga y cuándo llegó a San Antonio?",
+    "documento_esperado": null
+  },
+  {
+    "id": "R1", "tipo": "restringida", "rol": "vendedor", "operacion_id": "QF1004",
+    "consulta": "¿Cuál fue el margen de la operación QF1004?",
+    "documento_esperado": "reporte_margenes_octubre_2026"
+  },
+  {
+    "id": "R2", "tipo": "restringida", "rol": "comex", "operacion_id": "QF1001",
+    "consulta": "¿Cuál es la tarifa acordada con el agente de Ningbo para un contenedor 40HC?",
+    "documento_esperado": "tarifario_agentes_origen_2026"
+  }
+]

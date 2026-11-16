@@ -66,6 +66,7 @@ class Categoria(str, Enum):
     ALERTA_COSTO = "alerta_costo"
     ESTADO_OPERACION = "estado_operacion"
     FUERA_DE_ALCANCE = "fuera_de_alcance"
+    SIN_EVIDENCIA = "sin_evidencia"          # PE3: los documentos recuperados no responden la consulta
 
 
 class Entrada(BaseModel):
@@ -110,6 +111,8 @@ class Salida(BaseModel):
             raise ValueError("requiere_humano debe ser true cuando faltan documentos")
         if self.categoria == Categoria.FUERA_DE_ALCANCE and not self.requiere_humano:
             raise ValueError("requiere_humano debe ser true cuando la consulta está fuera de alcance")
+        if self.categoria == Categoria.SIN_EVIDENCIA and not self.requiere_humano:
+            raise ValueError("requiere_humano debe ser true cuando no hay evidencia en los documentos")
         return self
 
 

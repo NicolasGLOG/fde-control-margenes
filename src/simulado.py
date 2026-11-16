@@ -5,6 +5,7 @@ con invalido=True devuelve siempre una salida que no pasa la validación.
 """
 
 import json
+import re
 from types import SimpleNamespace
 
 SALIDA_VALIDA = {
@@ -38,3 +39,54 @@ class _Mensajes:
 class ClienteSimulado:
     def __init__(self, invalido: bool = False):
         self.beta = SimpleNamespace(messages=_Mensajes(invalido))
+
+
+# ---------------------------------------------------------------------
+# PE3: cliente simulado para el RAG
+# ---------------------------------------------------------------------
+
+class _MensajesRAG:
+    """Guarda cada petición (para revisar qué vio el modelo) y cita el primer fragmento recibido.
+    Con fuentes_fijas se puede forzar qué fragmentos cita (por ejemplo, uno inventado)."""
+
+    def __init__(self, fuentes_fijas=None):
+        self.peticiones = []
+        self.fuentes_fijas = fuentes_fijas
+
+    def create(self, **kwargs):
+        self.peticiones.append(kwargs)
+        prompt = kwargs["messages"][0]["content"]
+        ids = re.findall(r"^\[([^\]]+#\d+)\]$", prompt, re.M)
+        fuentes = self.fuentes_fijas if self.fuentes_fijas is not None else ids[:1]
+        if fuentes:
+            salida = {
+                "categoria": "estado_operacion", "documentos_recibidos": [], "documentos_faltantes": [],
+                "costo_acordado_usd": None, "costo_facturado_usd": None, "requiere_humano": True,
+                "confianza": 0.5, "respuesta": f"Respuesta simulada a partir de {fuentes[0]}.",
+                "fuentes": fuentes,
+            }
+        else:
+            salida = {
+                "categoria": "sin_evidencia", "documentos_recibidos": [], "documentos_faltantes": [],
+                "costo_acordado_usd": None, "costo_facturado_usd": None, "requiere_humano": True,
+                "confianza": 0.0, "respuesta": "Los documentos no contienen la respuesta.", "fuentes": [],
+            }
+        return SimpleNamespace(
+            content=[SimpleNamespace(type="text", text=json.dumps(salida, ensure_ascii=False))],
+            usage=SimpleNamespace(input_tokens=0, output_tokens=0),
+            stop_reason="end_turn",
+        )
+
+
+class ClienteSimuladoRAG:
+    def __init__(self, fuentes_fijas=None):
+        self.mensajes = _MensajesRAG(fuentes_fijas)
+        self.beta = SimpleNamespace(messages=self.mensajes)
+
+    def prompts_enviados(self) -> str:
+        """Todo el texto que se le habría enviado al modelo (sistema + mensajes)."""
+        partes = []
+        for p in self.mensajes.peticiones:
+            partes.append(p["system"])
+            partes.extend(str(m["content"]) for m in p["messages"])
+        return "\n".join(partes)
